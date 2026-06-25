@@ -4,7 +4,7 @@ Listing: Ship useful agent skills we can add to Solana AI Kit
 
 ## Submission link
 
-TODO: Add public GitHub repository or PR URL after publishing.
+https://github.com/Shu-starlight/solana-agent-safety-skill
 
 ## Title
 
