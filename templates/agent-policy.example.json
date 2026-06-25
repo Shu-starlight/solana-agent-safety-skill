@@ -1,0 +1,82 @@
+{
+  "name": "example-devnet-agent-policy",
+  "version": "2026-06-25",
+  "cluster": "devnet",
+  "wallets": [
+    {
+      "role": "proposer",
+      "publicKey": "PROPOSER_PUBLIC_KEY_PLACEHOLDER",
+      "allowedActions": ["build_unsigned_transaction", "request_simulation"],
+      "canSign": false,
+      "canBroadcast": false
+    },
+    {
+      "role": "signer",
+      "publicKey": "SIGNER_PUBLIC_KEY_PLACEHOLDER",
+      "allowedActions": ["sign_policy_approved_transaction"],
+      "canSign": true,
+      "canBroadcast": false
+    },
+    {
+      "role": "broadcaster",
+      "publicKey": "BROADCASTER_PUBLIC_KEY_PLACEHOLDER",
+      "allowedActions": ["broadcast_signed_transaction", "poll_status"],
+      "canSign": false,
+      "canBroadcast": true
+    }
+  ],
+  "allowlists": {
+    "programIds": [
+      {
+        "id": "11111111111111111111111111111111",
+        "name": "System Program",
+        "allowedInstructionFamilies": ["transfer"],
+        "notes": "Example only. Replace with project-specific allowlist."
+      }
+    ],
+    "tokenMints": [
+      {
+        "mint": "TOKEN_MINT_PLACEHOLDER",
+        "symbol": "EXAMPLE",
+        "maxUiAmountPerTransaction": 10
+      }
+    ],
+    "destinations": ["DESTINATION_PUBLIC_KEY_PLACEHOLDER"]
+  },
+  "denylists": {
+    "programIds": [],
+    "destinations": []
+  },
+  "limits": {
+    "perTransactionUsd": 25,
+    "perHourUsd": 50,
+    "perDayUsd": 100,
+    "maxSlippageBps": 50,
+    "maxPriorityFeeLamports": 50000,
+    "maxWritableAccounts": 16,
+    "maxSigners": 2,
+    "maxRetriesPerIntent": 2
+  },
+  "gates": {
+    "requireSimulation": true,
+    "requireSigVerifyWhenAvailable": true,
+    "requireIdempotencyKey": true,
+    "requireMessageHashMatchAfterSigning": true,
+    "requireHumanApprovalOnMainnet": true,
+    "requireHumanApprovalForNewProgram": true,
+    "requireHumanApprovalForAuthorityChanges": true,
+    "confirmationTarget": "confirmed",
+    "staleBlockhashSlots": 120
+  },
+  "monitoring": {
+    "auditLogPath": "logs/agent-transactions.jsonl",
+    "alertChannels": ["console"],
+    "stuckTransactionTimeoutSeconds": 90,
+    "pollIntervalSeconds": 3,
+    "emergencyStop": {
+      "enabled": true,
+      "owner": "HUMAN_OWNER_IDENTIFIER",
+      "procedure": "Pause scheduler, disable signer access, preserve logs, then reconcile signatures."
+    }
+  }
+}
