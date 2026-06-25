@@ -46,7 +46,7 @@ solana-agent-safety-skill/
 Default install:
 
 ```bash
-./install.sh -y
+bash install.sh -y
 ```
 
 This copies the skill to:
@@ -58,13 +58,13 @@ This copies the skill to:
 Custom install:
 
 ```bash
-./install.sh --path ./.claude/skills
+bash install.sh --path ./.claude/skills
 ```
 
 ## Validate the bundled policy example
 
 ```bash
-./validate.sh
+bash validate.sh
 ```
 
 Or run the validator directly:
