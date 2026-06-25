@@ -35,9 +35,9 @@ This skill gives builders a production-oriented operating model for agentic Sola
 Validated locally:
 
 ```bash
-./validate.sh
+bash validate.sh
 python3 -c "import py_compile; py_compile.compile('solana-agent-safety-skill/scripts/validate_agent_policy.py', cfile='/private/tmp/validate_agent_policy.pyc', doraise=True); print('py_compile ok')"
-./install.sh -y --path /private/tmp/solana-agent-safety-install-test
+bash install.sh -y --path /private/tmp/solana-agent-safety-install-test
 ```
 
 ## Fit with the bounty
